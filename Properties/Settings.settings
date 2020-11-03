@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ASasitharan_NETD3202_Lab3.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="connect_string" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Projects\NETD3202\ASasitharan_NETD3202_Lab3\ASasitharan_NETD3202_Lab3\navigatetheworld_db.mdf;Integrated Security=True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

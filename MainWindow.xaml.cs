@@ -28,6 +28,7 @@ namespace ASasitharan_NETD3202_Lab3
     /// </summary>
     public partial class MainWindow : Window
     {
+        //create a new list.
         List<shares> list = new List<shares>();
         public MainWindow()
         {
@@ -233,14 +234,13 @@ namespace ASasitharan_NETD3202_Lab3
                                     {
                                       
                                         radiobtn = rbCommon.Content.ToString();
+                                      
+                                        //create a new CommonShare object and add it to the list
                                         CommonShare commonShare = new CommonShare(txtBuyerName.Text, dpDatePurchased.Text, numOfShares, radiobtn);
                                         list.Add(commonShare);
+
                                         //subtract the total common shares with the user inputted shares
                                         availableShares = numCommonShares - numOfShares;
-
-                                      
-
-
 
                                         //connect to the database
                                         string connectUpdate = Properties.Settings.Default.connect_string;
@@ -261,6 +261,7 @@ namespace ASasitharan_NETD3202_Lab3
                                     {
 
                                         radiobtn = rbPreferred.Content.ToString();
+                                      
                                         //create a new PreferredShare Object and add it to the list
                                         PreferredShares preferredShare = new PreferredShares(txtBuyerName.Text, dpDatePurchased.Text, numOfShares, radiobtn);
                                         list.Add(preferredShare);

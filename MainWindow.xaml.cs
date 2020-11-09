@@ -19,6 +19,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections.ObjectModel;
+
 namespace ASasitharan_NETD3202_Lab3
 {
     /// <summary>
@@ -26,9 +28,11 @@ namespace ASasitharan_NETD3202_Lab3
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<shares> list = new List<shares>();
         public MainWindow()
         {
             InitializeComponent();
+            lstShares.ItemsSource = list;
             SetSummary();
             FillDataGrid();
             Revenue();
@@ -121,6 +125,7 @@ namespace ASasitharan_NETD3202_Lab3
         //This function calculates the total revenue
         public void Revenue()
         {
+           
             int totalRevenue = 0;
             int day=0;
             int range = 0;
@@ -182,6 +187,7 @@ namespace ASasitharan_NETD3202_Lab3
             int numPreferredShares = 0;
             string radiobtn = "";
             int availableShares = 0;
+            int price = 0;
             try
             {
                 //run is the buyer name is not empty
@@ -225,10 +231,16 @@ namespace ASasitharan_NETD3202_Lab3
                                     //run if the common radio button is checked
                                     if (rbCommon.IsChecked == true)
                                     {
+                                      
+                                        radiobtn = rbCommon.Content.ToString();
+                                        CommonShare commonShare = new CommonShare(txtBuyerName.Text, dpDatePurchased.Text, numOfShares, radiobtn);
+                                        list.Add(commonShare);
                                         //subtract the total common shares with the user inputted shares
                                         availableShares = numCommonShares - numOfShares;
 
-                                        radiobtn = rbCommon.Content.ToString();
+                                      
+
+
 
                                         //connect to the database
                                         string connectUpdate = Properties.Settings.Default.connect_string;
@@ -247,7 +259,11 @@ namespace ASasitharan_NETD3202_Lab3
                                     //run if the preferred radio button is checked
                                     else if (rbPreferred.IsChecked == true)
                                     {
+
                                         radiobtn = rbPreferred.Content.ToString();
+                                        //create a new PreferredShare Object and add it to the list
+                                        PreferredShares preferredShare = new PreferredShares(txtBuyerName.Text, dpDatePurchased.Text, numOfShares, radiobtn);
+                                        list.Add(preferredShare);
                                         //subtract the total preferred shares with the user inputted shares
                                         availableShares = numPreferredShares - numOfShares;
                                         //connect to the database
@@ -283,7 +299,7 @@ namespace ASasitharan_NETD3202_Lab3
                                     //set the form back to default
                                     SetDefaults();
                                     MessageBox.Show("Added a record");
-
+                                    lstShares.Items.Refresh();
                                 }
                                 else
                                 {

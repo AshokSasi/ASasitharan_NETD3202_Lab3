@@ -53,6 +53,22 @@
               </Grid>
 
             </TabItem>
+            <TabItem x:Name="tbViewObjects" Header="View Objects">
+                <Grid>
+                    <ListView x:Name="lstShares" Margin="5,5,5,5">
+                        <ListView.View>
+                            <GridView x:Name="sharesGridView">
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding BuyerName}" Width="70"></GridViewColumn>
+                                <GridViewColumn Header="Number of Shares" DisplayMemberBinding="{Binding NumShares}" ></GridViewColumn>
+                                <GridViewColumn Header="Date Purchased"  DisplayMemberBinding="{Binding BuyDate}"></GridViewColumn>
+                                <GridViewColumn Header="Share Type" DisplayMemberBinding="{Binding ShareType}" Width="70"></GridViewColumn>
+                                <GridViewColumn Header="Share Price" DisplayMemberBinding="{Binding SharePrice}"></GridViewColumn>
+                                <GridViewColumn Header="Voting Power" DisplayMemberBinding="{Binding VotePower}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
         </TabControl>
       
     </Grid>
